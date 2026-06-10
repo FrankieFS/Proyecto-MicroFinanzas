@@ -41,6 +41,7 @@
     </nav>
     <!--#endregion Navbar Menu-->
     
+
     <!--#region Wrapper de Botones-->
     <div class="app-wrapper">
         <aside class="sidebar" id="sidebar">
@@ -155,10 +156,117 @@
     </div>
     <!--#endregion Wrapper de Botones-->
 
-    <!--#region Notificaciones-->
-    <div class="toast-container-custom" id="toast-container"></div>
-    <!--#endregion Notificaciones-->
 
+    <!--#region Notificaciones -->
+    <div class="toast-container-custom" id="toast-container"></div>
+    <!--#endregion Notificaciones -->
+
+
+    <!--#region Editar Transaccion-->
+    <div class="modal fade" id="editTransactionModal" tabindex="-1" aria-labelledby="editTransactionModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editTransactionModalLabel"><i class="bi bi-pencil-square me-2"></i>Editar Transacción</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="edit-transaction-form" novalidate>
+                        <input type="hidden" id="edit-tx-id">
+                        <div class="mb-3">
+                            <label for="edit-tx-date" class="form-label">Fecha</label>
+                            <input type="date" class="form-control" id="edit-tx-date" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-tx-type" class="form-label">Tipo de Movimiento</label>
+                            <select class="form-select" id="edit-tx-type" required>
+                                <option value="income">Ingreso (Venta / Entrada)</option>
+                                <option value="expense">Egreso (Gasto / Salida)</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-tx-category" class="form-label">Categoría</label>
+                            <select class="form-select" id="edit-tx-category" required>
+                                <!-- JS will populate -->
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-tx-description" class="form-label">Detalle / Descripción</label>
+                            <input type="text" class="form-control" id="edit-tx-description" placeholder="Ej. Compra de harina" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="edit-tx-qty" class="form-label">Cantidad</label>
+                                <input type="number" class="form-control" id="edit-tx-qty" min="1" step="any" value="1" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="edit-tx-price" class="form-label">Precio Unitario ($)</label>
+                                <input type="number" class="form-control" id="edit-tx-price" min="0.01" step="any" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-tx-total" class="form-label">Total Calculado ($)</label>
+                            <input type="number" class="form-control" id="edit-tx-total" readonly>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-premium" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary btn-premium btn-premium-primary" id="save-edit-tx-btn">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--#endregion Editar Transaccion-->
+
+
+    <!--#region Confirmar Eliminación-->
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="confirmDeleteModalLabel"><i class="bi bi-exclamation-triangle-fill me-2"></i>Confirmar</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center py-4">
+                    <p class="mb-0">¿Estás seguro de que deseas eliminar este registro? Esta acción no se puede deshacer.</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary btn-premium" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger btn-premium" id="confirm-delete-btn">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--#endregion Confirmar Eliminación-->
+
+
+    <!--#region Confirmar Reinicio-->
+    <div class="modal fade" id="confirmResetModal" tabindex="-1" aria-labelledby="confirmResetModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="confirmResetModalLabel"><i class="bi bi-exclamation-octagon-fill me-2"></i>¡Peligro: Reinicio Total!</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center py-4">
+                    <i class="bi bi-trash-fill text-danger" style="font-size: 3rem;"></i>
+                    <h4 class="mt-3">¿Borrar absolutamente todo?</h4>
+                    <p class="text-muted">Se eliminarán permanentemente todas las transacciones, empleados, metas y configuraciones del negocio guardadas en este navegador.</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary btn-premium" data-bs-dismiss="modal">Cancelar y Conservar Datos</button>
+                    <button type="button" class="btn btn-danger btn-premium" id="confirm-reset-btn">Sí, Borrar Todo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--#endregion Confirmar Reinicio-->
+
+
+    <!-- Esta parte es necesaria para mostrar ciertos efectos de java que nos proporciona Bootstrap, como los mensajes flotantes de las notificaciones-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
     <!-- Custom Application JS -->
     <script src="js/app.js"></script>
 </body>

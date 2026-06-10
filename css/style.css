@@ -1,6 +1,7 @@
+/* Aqui importamos la fuente que vamos a usar*/
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
-/* Dark Mode Palette */
+/* Modo oscuro de nuestro sitio web */
 body.dark-mode {
     --bg-primary: #0f172a;
     --bg-secondary: #1e293b;
