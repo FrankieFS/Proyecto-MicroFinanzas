@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicroFinanzas EC</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Nuestro CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!--#region Navbar Menu-->
+    <nav class="navbar navbar-expand-lg navbar-custom py-2">
+        <div class="container-fluid">
+            <button class="mobile-sidebar-toggle me-2" id="sidebar-toggle" aria-label="Toggle Sidebar">
+                <i class="bi bi-list"></i>
+            </button>
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.png" alt="MicroFinanzas EC Logo" width="40" height="40">
+                <span class="d-none d-sm-inline">MicroFinanzas EC</span>
+            </a>
+            <div class="ms-sm-3 me-auto">
+                <span class="badge bg-primary-light text-primary border border-primary-subtle py-2 px-3" id="current-business-badge">
+                    <i class="bi bi-shop me-1"></i> Negocio: <strong id="current-business-name">Sin configurar</strong>
+                </span>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <button class="theme-toggle-btn" id="theme-toggle-btn" title="Alternar Modo Claro/Oscuro">
+                    <i class="bi bi-moon-stars" id="theme-icon"></i>
+                </button>
+                <div class="d-none d-md-block text-end me-2">
+                    <small class="text-muted d-block" style="font-size: 0.75rem;">Exposición Proyecto</small>
+                    <span class="fw-semibold text-secondary" style="font-size: 0.85rem;" id="user-display">Grupo: Juan Cruz y Franklin Fierro</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--#endregion Navbar Menu-->
+    
+    <!--#region Wrapper de Botones-->
+    <div class="app-wrapper">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header d-flex align-items-center justify-content-between">
+                <span class="fw-bold text-uppercase tracking-wider text-muted" style="font-size: 0.75rem;">Navegación</span>
+                <button class="btn btn-sm btn-link text-white d-lg-none" id="sidebar-close" aria-label="Close sidebar">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link active" data-screen="dashboard">
+                        <i class="bi bi-grid-1x2-fill"></i>
+                        <span>Dashboard Principal</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" data-screen="business-selector">
+                        <i class="bi bi-shop-window"></i>
+                        <span>Selector de Negocio</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" data-screen="add-transaction">
+                        <i class="bi bi-plus-circle-fill"></i>
+                        <span>Nueva Transacción</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" data-screen="history">
+                        <i class="bi bi-journal-text"></i>
+                        <span>Historial de Movimientos</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" data-screen="payroll">
+                        <i class="bi bi-people-fill"></i>
+                        <span>Nómina de Empleados</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" data-screen="income-report">
+                        <i class="bi bi-graph-up-arrow text-success-custom"></i>
+                        <span>Reporte de Ingresos</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" data-screen="expense-report">
+                        <i class="bi bi-graph-down-arrow text-danger-custom"></i>
+                        <span>Reporte de Egresos</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" data-screen="budgets">
+                        <i class="bi bi-wallet2"></i>
+                        <span>Planificador Presupuestos</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" data-screen="margin-calculator">
+                        <i class="bi bi-calculator"></i>
+                        <span>Calculadora Margen</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" data-screen="tax-calculator">
+                        <i class="bi bi-percent"></i>
+                        <span>Calculadora Impuestos</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" data-screen="saving-goals">
+                        <i class="bi bi-piggy-bank-fill"></i>
+                        <span>Metas de Ahorro</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" data-screen="cash-register">
+                        <i class="bi bi-cash-coin"></i>
+                        <span>Caja Diaria</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" data-screen="faq">
+                        <i class="bi bi-question-octagon-fill"></i>
+                        <span>Preguntas Frecuentes</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" data-screen="team-info">
+                        <i class="bi bi-info-circle-fill"></i>
+                        <span>Acerca del Equipo</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" data-screen="settings">
+                        <i class="bi bi-sliders"></i>
+                        <span>Configuración y Datos</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <div id="content-area">
+                <div class="d-flex justify-content-center align-items-center h-100 py-5">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Cargando...</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!--#endregion Wrapper de Botones-->
+
+    <!--#region Notificaciones-->
+    <div class="toast-container-custom" id="toast-container"></div>
+    <!--#endregion Notificaciones-->
+
+    <!-- Custom Application JS -->
+    <script src="js/app.js"></script>
+</body>
+</html>
