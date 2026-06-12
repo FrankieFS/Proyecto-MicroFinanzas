@@ -29,7 +29,7 @@ let currentActiveScreen = 'dashboard';
 function navigateTo(screenId) {
     currentActiveScreen = screenId;
     
-    // Update sidebar UI active links
+    //Actualizar el estado de los enlaces en la barra lateral
     document.querySelectorAll('.sidebar-link').forEach(link => {
         if (link.getAttribute('data-screen') === screenId) {
             link.classList.add('active');
@@ -38,22 +38,22 @@ function navigateTo(screenId) {
         }
     });
     
-    // Update Navbar Brand Info
+    // Actualizar el nombre del negocio en el badge del header
     const bizBadgeName = document.getElementById('current-business-name');
     if (bizBadgeName) {
         bizBadgeName.innerText = state.businessName;
     }
     
-    // Render the specific screen contents
+    // Cargar la pantalla correspondiente
     renderScreen(screenId);
     
-    // Close sidebar on mobile after navigation
+    // Cerrar sidebar en móviles después de navegar
     const sidebar = document.getElementById('sidebar');
     if (sidebar) {
         sidebar.classList.remove('show');
     }
     
-    // Scroll window to top
+    // Scroll para que el usuario siempre vea el inicio de la nueva pantalla
     window.scrollTo({ top: 0, behavior: 'instant' });
 }
 
@@ -288,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Configurar botón de toggle de tema
     document.getElementById('theme-toggle-btn').addEventListener('click', toggleTheme);
 
-    // Mobile Sidebar controls
+    // Controles por si se quiere abrir o cerrar la barra lateral en dispositivos móviles
     const sidebar = document.getElementById('sidebar');
     const toggleSidebarBtn = document.getElementById('sidebar-toggle');
     const closeSidebarBtn = document.getElementById('sidebar-close');
@@ -305,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // Bind Sidebar Screen links
+    // Navegar entre pantallas al hacer clic en los enlaces de la barra lateral
     document.querySelectorAll('.sidebar-link').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
