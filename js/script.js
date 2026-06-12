@@ -24,7 +24,38 @@ function toggleTheme() {
     showToast(`Modo ${state.theme === 'light' ? 'Claro' : 'Oscuro'} activado con éxito`, 'success');
 }
 
+let currentActiveScreen = 'dashboard';
 
+function navigateTo(screenId) {
+    currentActiveScreen = screenId;
+    
+    // Update sidebar UI active links
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+        if (link.getAttribute('data-screen') === screenId) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+    
+    // Update Navbar Brand Info
+    const bizBadgeName = document.getElementById('current-business-name');
+    if (bizBadgeName) {
+        bizBadgeName.innerText = state.businessName;
+    }
+    
+    // Render the specific screen contents
+    renderScreen(screenId);
+    
+    // Close sidebar on mobile after navigation
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar) {
+        sidebar.classList.remove('show');
+    }
+    
+    // Scroll window to top
+    window.scrollTo({ top: 0, behavior: 'instant' });
+}
 
 // Navegación entre pantallas
 function renderScreen(screenId) {
@@ -256,7 +287,33 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Configurar botón de toggle de tema
     document.getElementById('theme-toggle-btn').addEventListener('click', toggleTheme);
+
+    // Mobile Sidebar controls
+    const sidebar = document.getElementById('sidebar');
+    const toggleSidebarBtn = document.getElementById('sidebar-toggle');
+    const closeSidebarBtn = document.getElementById('sidebar-close');
     
+    if (toggleSidebarBtn && sidebar) {
+        toggleSidebarBtn.addEventListener('click', () => {
+            sidebar.classList.add('show');
+        });
+    }
+    
+    if (closeSidebarBtn && sidebar) {
+        closeSidebarBtn.addEventListener('click', () => {
+            sidebar.classList.remove('show');
+        });
+    }
+    
+    // Bind Sidebar Screen links
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetScreen = link.getAttribute('data-screen');
+            navigateTo(targetScreen);
+        });
+    });
+
     // Renderizar pantalla inicial (Dashboard)
     navigateTo('dashboard');
 });
