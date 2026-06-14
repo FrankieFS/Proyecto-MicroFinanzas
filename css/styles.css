@@ -254,3 +254,250 @@ body {
     transform: scale(1.1) rotate(5deg);
 }
 
+/* Botones */
+.btn-premium {
+    font-weight: 600;
+    border-radius: var(--border-radius);
+    padding: 0.6rem 1.25rem;
+    transition: all 0.2s ease;
+}
+.btn-premium-primary {
+    background-color: var(--primary);
+    color: #ffffff;
+    border: none;
+}
+.btn-premium-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.2);
+}
+.btn-premium-success {
+    background-color: var(--success);
+    color: #ffffff;
+    border: none;
+}
+.btn-premium-success:hover {
+    background-color: var(--success-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(var(--success-rgb), 0.2);
+}
+
+/* Formas */
+.form-control, .form-select {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 8px;
+    padding: 0.6rem 0.9rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.form-control:focus, .form-select:focus {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.15);
+}
+.form-label {
+    font-weight: 550;
+    color: var(--text-secondary);
+    margin-bottom: 0.4rem;
+}
+
+/* Tablas */
+.table-custom {
+    background-color: var(--bg-secondary);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+}
+.table-custom th {
+    background-color: var(--bg-tertiary);
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.table-custom td {
+    padding: 1rem 1.25rem;
+    color: var(--text-primary);
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border-color);
+}
+.table-custom tr:last-child td {
+    border-bottom: none;
+}
+.table-custom tr {
+    transition: background-color 0.2s ease;
+}
+.table-custom tbody tr:hover {
+    background-color: var(--bg-tertiary);
+}
+
+/* Otros estilos */
+.badge-custom {
+    padding: 0.35em 0.65em;
+    font-size: 0.75em;
+    font-weight: 600;
+    border-radius: 6px;
+}
+.badge-income {
+    background-color: rgba(var(--success-rgb), 0.15);
+    color: var(--success);
+}
+.badge-expense {
+    background-color: rgba(var(--danger-rgb), 0.15);
+    color: var(--danger);
+}
+.badge-payroll {
+    background-color: rgba(var(--primary-rgb), 0.15);
+    color: var(--primary);
+}
+
+/* CSS del TOAST */
+.toast-container-custom {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1080;
+}
+.toast-custom {
+    background-color: var(--bg-secondary);
+    border-left: 4px solid var(--primary);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 10px;
+    min-width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: all 0.3s ease;
+}
+.toast-custom.toast-success { border-left-color: var(--success); }
+.toast-custom.toast-danger { border-left-color: var(--danger); }
+.toast-custom.toast-warning { border-left-color: var(--warning); }
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%) translateY(10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Modal Moderno */
+.modal-content {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    color: var(--text-primary);
+}
+.modal-header {
+    border-bottom: 1px solid var(--border-color);
+}
+.modal-footer {
+    border-top: 1px solid var(--border-color);
+}
+
+/* Alternador de Tema */
+.theme-toggle-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.25rem;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+.theme-toggle-btn:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+
+/* Diseño responsivo */
+@media (max-width: 991.98px) {
+    .mobile-sidebar-toggle {
+        display: block;
+    }
+    .app-wrapper {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: -100%;
+        height: calc(100vh - 70px);
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+    }
+    .sidebar.show {
+        left: 0;
+    }
+    .main-content {
+        padding: 1.25rem;
+    }
+}
+
+/* Utilidades */
+.text-success-custom { color: var(--success); }
+.text-danger-custom { color: var(--danger); }
+.bg-success-light { background-color: rgba(var(--success-rgb), 0.1); }
+.bg-danger-light { background-color: rgba(var(--danger-rgb), 0.1); }
+.bg-warning-light { background-color: rgba(var(--warning-rgb), 0.1); }
+.bg-primary-light { background-color: rgba(var(--primary-rgb), 0.1); }
+
+/* Banner de bienvenida */
+.welcome-banner {
+    background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.9) 0%, rgba(var(--primary-rgb), 0.6) 100%);
+    color: #ffffff;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 20px -5px rgba(var(--primary-rgb), 0.25);
+}
+.welcome-banner .banner-decorations {
+    position: absolute;
+    right: -20px;
+    bottom: -20px;
+    font-size: 12rem;
+    opacity: 0.12;
+    transform: rotate(-15deg);
+    pointer-events: none;
+}
+
+/* Selector de Grillas */
+.business-type-card {
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+.business-type-card.selected {
+    border-color: var(--primary);
+    background-color: rgba(var(--primary-rgb), 0.04);
+}
+
+/* Margin y Padding */
+.gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 1rem; }
+.d-flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -598,7 +598,7 @@ function renderBusinessSelector(container) {
     });
 }
 
--
+
 // 3. Nueva Transacción
 function renderAddTransaction(container) {
     // Determine categories based on active business type
